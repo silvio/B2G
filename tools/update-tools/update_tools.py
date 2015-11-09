@@ -47,6 +47,9 @@ def validate_env(parser):
     if not which("arm-linux-androideabi-readelf", path=os.environ.get("ANDROID_TOOLCHAIN")):
         parser.error("No readelf binary in ANDROID_TOOLCHAIN")
 
+    if not which("file"):
+        parser.error("This tool requires file to be on your PATH")
+
 def run_command(*args, **kwargs):
     try:
         if "input" in kwargs:
